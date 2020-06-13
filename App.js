@@ -1,12 +1,12 @@
 import React from "react";
-import { Button, Text, View } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
+
+import Navigation from './app/components/Navigation/Navigation';
 
 function App() {
   return (
-    <NavigationContainer>
-     
-    </NavigationContainer>
+    
+        <Navigation/>
+    
   );
 }
 
