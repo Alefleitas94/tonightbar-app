@@ -14,7 +14,7 @@ const MainTabScreen = () =>{
   
   return (
 
-  <Tab.Navigator initialRouteName="Bars" activeColor="#fff">
+  <Tab.Navigator initialRouteName="Bars"  activeColor="#fff" >
     <Tab.Screen
       name="Bars"
       component= {BarStackScreen}
@@ -27,6 +27,7 @@ const MainTabScreen = () =>{
             }}
     />
     <Tab.Screen
+     
       name="Ranking"
       component={TopBarsStackScreen}
       options={{
