@@ -12,7 +12,7 @@ const TopBarsStackScreen = () => (
     <TopBarsStack.Navigator
         screenOptions={{
           headerStyle: {
-            backgroundColor: "#694fad",
+            backgroundColor: "#2766c4",
           },
           headerTintColor: "#fff",
           headerTitleStyle: {

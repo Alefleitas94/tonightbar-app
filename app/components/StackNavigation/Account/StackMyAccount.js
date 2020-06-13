@@ -2,7 +2,7 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
 //Importando Screen Bars
-import MyAccountScreen from "../../../screens/MyAccount/MyAccountScreen";
+import MyAccountScreen from "../../../screens/Account/MyAccountScreen";
 
 //Creando el stack MyAccount
 const MyAccountStack = createStackNavigator();
@@ -12,7 +12,7 @@ const MyAccountStackScreen = () => (
   <MyAccountStack.Navigator
     screenOptions={{
       headerStyle: {
-        backgroundColor: "#62ad4f",
+        backgroundColor: "#2766c4",
       },
       headerTintColor: "#fff",
       headerTitleStyle: {

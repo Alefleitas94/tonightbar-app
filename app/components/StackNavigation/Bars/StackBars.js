@@ -15,7 +15,7 @@ const BarStack = createStackNavigator();
       <BarStack.Navigator
         screenOptions={{
           headerStyle: {
-            backgroundColor: "#62ad4f",
+            backgroundColor: "#2766c4",
           },
           headerTintColor: "#fff",
           headerTitleStyle: {

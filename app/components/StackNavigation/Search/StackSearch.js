@@ -12,12 +12,10 @@ const SearchStackScreen = () => (
   <SearchStack.Navigator
     screenOptions={{
       headerStyle: {
-        backgroundColor: "#22a6ce",
+        backgroundColor: "#2766c4",
       },
       headerTintColor: "#fff",
-      headerTitleStyle: {
-        fontWeight: "bold",
-      },
+      
       headerTitleAlign: "center",
     }}
   >
@@ -25,7 +23,7 @@ const SearchStackScreen = () => (
       name="Search"
       component={SearchScreen}
       options={{
-        title: "Buscar",
+        title: "Busca tu restaurante",
       }}
     />
   </SearchStack.Navigator>

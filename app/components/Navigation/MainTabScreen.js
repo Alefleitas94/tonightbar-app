@@ -1,11 +1,11 @@
 import React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/Octicons';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 import BarStackScreen from "../StackNavigation/Bars/StackBars";
 import TopBarsStackScreen from '../StackNavigation/TopBars/StackTopBars';
-import MyAccountStackScreen from '../StackNavigation/MyAccount/StackMyAccount';
+import MyAccountStackScreen from '../StackNavigation/Account/StackMyAccount';
 import SearchStackScreen from '../StackNavigation/Search/StackSearch';
 
 const Tab = createMaterialBottomTabNavigator();
@@ -20,20 +20,20 @@ const MainTabScreen = () =>{
       component= {BarStackScreen}
       options={{
                 tabBarLabel: "Bares",
-                tabBarColor: '#62ad4f',
+                tabBarColor: '#2766c4',
                 tabBarIcon: ({ color }) => (
                     <MaterialCommunityIcons name="compass-outline" color={color} size={26} />
                 )
             }}
     />
     <Tab.Screen
-      name="TopBars"
+      name="Ranking"
       component={TopBarsStackScreen}
       options={{
         tabBarLabel: "Top Bares",
-        tabBarColor: "#694fad",
+        tabBarColor: "#2766c4",
         tabBarIcon: ({ color }) => (
-          <MaterialCommunityIcons name="cup" color={color} size={26} />
+          <Icon name="star" color={color} size={26} />
         ),
       }}
     />
@@ -42,9 +42,9 @@ const MainTabScreen = () =>{
       component= {SearchStackScreen}
       options = {{
         tabBarLabel: 'Buscar',
-        tabBarColor: '#22a6ce',
+        tabBarColor: '#2766c4',
         tabBarIcon: ({color}) => (
-          <Icon name='ios-search' color={color} size= {26}/>
+          <MaterialCommunityIcons name='magnify' color={color} size= {26}/>
         )
       }}
     />
@@ -53,9 +53,9 @@ const MainTabScreen = () =>{
       component= {MyAccountStackScreen}
       options = {{
         tabBarLabel: 'Mi Perfil',
-        tabBarColor: '#d45d40',
+        tabBarColor: '#2766c4',
         tabBarIcon: ({color}) => (
-          <MaterialCommunityIcons name='account' color={color} size= {26}/>
+          <MaterialCommunityIcons name='account-circle' color={color} size= {26}/>
         )
       }}
     />
