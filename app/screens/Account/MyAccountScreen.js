@@ -2,6 +2,9 @@
 import React, { useState, useEffect } from "react";
 import * as firebase from "firebase";
 import { View, Text, StyleSheet } from "react-native";
+import Loading from "../../components/ActivityIndicator/Loading";
+import UserGuest from "./UserGuest";
+import UserLogged from "./UserLogged";
 
 // create a component
 const MyAccountScreen = () => {
@@ -16,37 +19,23 @@ const MyAccountScreen = () => {
 
   if (login === null) {
     return (
-      <View style={styles.container}>
-        <Text>Cargando...</Text>
+      <View>
+        <Loading isVisible={true} text="Cargando" />
       </View>
     );
   }
 
-  if (login) {
-    return (
-      <View style={styles.container}>
-        <Text>Usuario Logueado</Text>
-      </View>
-    );
-  }
+  return login ? <UserLogged /> : <UserGuest />;
 
-  return (
-    <View style={styles.container}>
-      <Text>Usuario no Logueado</Text>
-    </View>
-  );
-}
-
-
-// define your styles
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#fff",
-  },
-});
-
+  // define your styles
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: "#2c3e50",
+    },
+  });
+};
 //make this component available to the app
 export default MyAccountScreen;
