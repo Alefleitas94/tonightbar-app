@@ -25,7 +25,7 @@ const MyAccountStackScreen = () => (
       name="MyAccount"
       component={MyAccountScreen}
       options={{
-        title: "Mi Perfil",
+        title: "Mi Cuenta",
       }}
     />
   </MyAccountStack.Navigator>
