@@ -3,13 +3,13 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 
 //Importando Screen Bars
-import TopBarsScreen from '../../../screens/TopBars/TopBarsScreen';
+import TopPubsScreen from '../../../screens/TopPubs/TopPubsScreen';
 
 //Creando el Stack de TopBars
-const TopBarsStack = createStackNavigator();
+const TopPubsStack = createStackNavigator();
 
-const TopBarsStackScreen = () => (
-    <TopBarsStack.Navigator
+const TopPubsStackScreen = () => (
+    <TopPubsStack.Navigator
         screenOptions={{
           headerStyle: {
             backgroundColor: "#2766c4",
@@ -22,14 +22,14 @@ const TopBarsStackScreen = () => (
         }}
 
     >
-        <TopBarsStack.Screen
+        <TopPubsStack.Screen
               name="TopBars"
-                  component={TopBarsScreen}
+                  component={TopPubsScreen}
                   options={{
                       title: "Top Bares",
                   }}
         />
-    </TopBarsStack.Navigator>
+    </TopPubsStack.Navigator>
 )
 
-export default TopBarsStackScreen;
+export default TopPubsStackScreen;

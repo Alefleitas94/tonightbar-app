@@ -3,14 +3,14 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import Icon from 'react-native-vector-icons/Octicons';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
-import BarStackScreen from "../StackNavigation/Bars/StackBars";
-import TopBarsStackScreen from '../StackNavigation/TopBars/StackTopBars';
+import PubStackScreen from "../StackNavigation/Pubs/StackPubs";
+import TopPubsStackScreen from '../StackNavigation/TopPubs/StackTopPubs';
 import MyAccountStackScreen from '../StackNavigation/Account/StackMyAccount';
 import SearchStackScreen from '../StackNavigation/Search/StackSearch';
 
 const Tab = createMaterialBottomTabNavigator();
 
-const MainTabScreen = () =>{ 
+const RootScreen = () =>{ 
   
   return (
 
@@ -63,4 +63,4 @@ const MainTabScreen = () =>{
   </Tab.Navigator>
 );}
 
-export default MainTabScreen;
+export default RootScreen;

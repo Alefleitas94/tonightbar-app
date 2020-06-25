@@ -2,17 +2,17 @@ import React from 'react';
 import { createStackNavigator } from "@react-navigation/stack";
 
 //Importando Screen Bars
-import BarsScreen from '../../../screens/Bars/BarsScreen';
+import PubsScreen from '../../../screens/Pubs/PubsScreen';
 
 
 //Creando el Stack de Bars
-const BarStack = createStackNavigator();
+const PubStack = createStackNavigator();
 
 
 //Creando el stack de screens de Bars
- const BarStackScreen = ({navigation}) => {
+ const PubStackScreen = ({navigation}) => {
     return (
-      <BarStack.Navigator
+      <PubStack.Navigator
         screenOptions={{
           headerStyle: {
             backgroundColor: "#2766c4",
@@ -24,16 +24,16 @@ const BarStack = createStackNavigator();
           headerTitleAlign: "center",
         }}
       >
-        <BarStack.Screen
+        <PubStack.Screen
                 name="Bars"
-                  component={BarsScreen}
+                  component={PubsScreen}
                   options={{
                       title: "Bares",
                   }}
         />
-      </BarStack.Navigator>
+      </PubStack.Navigator>
     );
 };
 
 
-export default BarStackScreen;
+export default PubStackScreen;

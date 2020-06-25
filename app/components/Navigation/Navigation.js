@@ -1,13 +1,13 @@
 import React from 'react';
 import { NavigationContainer } from "@react-navigation/native";
 
-import MainTabScreen from './MainTabScreen';
+import RootScreen from './RootScreen';
 
 
 
 const NavigationStack = () => (
     <NavigationContainer>
-            <MainTabScreen/>
+            <RootScreen/>
     </NavigationContainer>
 )
 
