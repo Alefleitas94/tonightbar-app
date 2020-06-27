@@ -1,13 +1,21 @@
 import React from "react";
 import { View, Text, ScrollView, StyleSheet, Image } from "react-native";
 import {Button} from "react-native-elements";
+import {useNavigation} from '@react-navigation/native'
+//import components
+
 
 // create a component
-const UserGuest = () => {
+const UserGuest = (props) => {
+
+  const navigation = useNavigation();
+
+  console.log(props);
+
   return (
     <ScrollView style={styles.viewBody} centerContent={true}>
       <Image
-        source={require("../../../assets/img/user-guest.jpg")}
+        source={require("../../../assets/img/user-guest.png")}
         style={styles.image}
         resizeMode="contain"
       />
@@ -22,7 +30,7 @@ const UserGuest = () => {
               buttonStyle = {styles.buttonStyle}
               containerStyle= {styles.btnContainer}
               title= 'Ver tu perfil'
-              onPress= {() => console.log('Hello')}
+              onPress={() => navigation.navigate("Login")}
           />
       </View>
     </ScrollView>

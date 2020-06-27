@@ -16,8 +16,8 @@ const RootScreen = () =>{
 
   <Tab.Navigator initialRouteName="Bars"  activeColor="#fff" >
     <Tab.Screen
-      name="Bars"
-      component= {BarStackScreen}
+      name="Pubs"
+      component= {PubStackScreen}
       options={{
                 tabBarLabel: "Bares",
                 tabBarColor: '#2766c4',
@@ -29,7 +29,7 @@ const RootScreen = () =>{
     <Tab.Screen
      
       name="Ranking"
-      component={TopBarsStackScreen}
+      component={TopPubsStackScreen} 
       options={{
         tabBarLabel: "Top Bares",
         tabBarColor: "#2766c4",

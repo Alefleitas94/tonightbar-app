@@ -1450,6 +1450,11 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/masked-view/-/masked-view-0.1.6.tgz#c7f2ac187c1f25aa8c30d11baa8f4398eca3bb84"
   integrity sha512-PpMoeXwPUoldCRKDuSi+zK5rT+sJTW6ri6RdGPkSKRzU77Q1d9IaR0O5IKvBj0XSdL3p+dcOa05gk35aGDffBQ==
 
+"@react-navigation/compat@^5.1.27":
+  version "5.1.27"
+  resolved "https://registry.yarnpkg.com/@react-navigation/compat/-/compat-5.1.27.tgz#253c567b8d6baba6e2ae24ba42ec25e7c03055c7"
+  integrity sha512-r9a7c6BwioyI/oYcsnPrBtrqB9ZQ8upSUW7Pao38OTPC4BYLxsz3/I57NzI96tWEyakPmKb9m5QQejJSRsXBBQ==
+
 "@react-navigation/core@^5.10.0":
   version "5.10.0"
   resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-5.10.0.tgz#aee9e22a5f0f458ebeadc155f347b13eb5ff5212"

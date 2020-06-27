@@ -1,8 +1,9 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-//Importando Screen Bars
+//import components
 import MyAccountScreen from "../../../screens/Account/MyAccountScreen";
+import LoginScreen from '../../../screens/Account/Login';
 
 //Creando el stack MyAccount
 const MyAccountStack = createStackNavigator();
@@ -15,9 +16,6 @@ const MyAccountStackScreen = () => (
         backgroundColor: "#2766c4",
       },
       headerTintColor: "#fff",
-      headerTitleStyle: {
-        fontWeight: "bold",
-      },
       headerTitleAlign: "center",
     }}
   >
@@ -26,6 +24,13 @@ const MyAccountStackScreen = () => (
       component={MyAccountScreen}
       options={{
         title: "Mi Cuenta",
+      }}
+    />
+    <MyAccountStack.Screen
+      name="Login"
+      component={LoginScreen}
+      options={{
+        title: "Iniciar Sesión",
       }}
     />
   </MyAccountStack.Navigator>
