@@ -1,15 +1,18 @@
 //import liraries
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Input, Button, Icon } from "react-native-elements";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 // create a component
 const RegisterForm = () => {
+    
+  const [hidePassword, setHidePassword] = useState(true);
+  const [hideRepeatPassword, setHideRepeatPassword] = useState(true);
 
-    const register = () => {
-        console.log('Registrado exitosamente')
-    }
+  const register = () => {
+    console.log("Registrado exitosamente");
+  };
 
   return (
     <View style={styles.formContainer}>
@@ -21,41 +24,45 @@ const RegisterForm = () => {
           <MaterialCommunityIcons
             name="email-outline"
             color="#c1c1c1"
-            size={18}
+            size={20}
           />
         }
       />
       <Input
         placeholder="Contraseña"
         password={true}
-        secureTextEntry={true}
+        secureTextEntry={hidePassword}
         containerStyle={styles.inputForm}
         onChange={() => console.log("email actualizado")}
         rightIcon={
           <MaterialCommunityIcons
-            name="eye-outline"
+            name={hidePassword ? "eye-outline" : "eye-off-outline"}
             color="#c1c1c1"
-            size={18}
+            size={20}
+            onPress={() => setHidePassword(!hidePassword)}
           />
         }
       />
       <Input
         placeholder="Repetir Contraseña"
+        password={true}
+        secureTextEntry={hideRepeatPassword}
         containerStyle={styles.inputForm}
         onChange={() => console.log("email actualizado")}
         rightIcon={
           <MaterialCommunityIcons
-            name="eye-outline"
+            name={hideRepeatPassword ? "eye-outline" : "eye-off-outline"}
             color="#c1c1c1"
-            size={18}
+            size={20}
+            onPress={() => setHideRepeatPassword(!hideRepeatPassword)}
           />
         }
       />
       <Button
         title="Registrarse"
         containerStyle={styles.btnContainerRegister}
-        buttonStyle= {styles.btnRegister}
-        onPress= {register}
+        buttonStyle={styles.btnRegister}
+        onPress={register}
       />
     </View>
   );
@@ -78,8 +85,8 @@ const styles = StyleSheet.create({
     width: "95%",
   },
   btnRegister: {
-      backgroundColor: '#00a680'
-  }
+    backgroundColor: "#00a680",
+  },
 });
 
 //make this component available to the app
