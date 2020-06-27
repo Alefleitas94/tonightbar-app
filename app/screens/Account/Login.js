@@ -1,8 +1,17 @@
 //import liraries
 import React, { Component } from "react";
-import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Image,
+  Button,
+} from "react-native";
 import { Divider } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
+
+//import components
 
 // create a component
 const Login = () => {
@@ -15,13 +24,29 @@ const Login = () => {
       />
       <View style={styles.viewContainer}>
         <Text>Form Login</Text>
-        <Text>Create Account</Text>
+        <CreateAccount />
       </View>
       <Divider style={styles.divider} />
-      <View style= {styles.viewContainer}>
-          <Text>Login Facebook</Text>
+      <View style={styles.viewContainer}>
+        <Text>Login Facebook</Text>
       </View>
     </ScrollView>
+  );
+};
+
+const CreateAccount = (props) => {
+  const {} = props;
+  const navigation = useNavigation();
+  return (
+    <Text style={styles.txtRegister}>
+      ¿Aún no tienes una cuenta?{" "}
+      <Text
+        style={styles.btnRegister}
+        onPress={() => navigation.navigate("Register")}
+      >
+        Regístrate
+      </Text>
+    </Text>
   );
 };
 
@@ -41,6 +66,15 @@ const styles = StyleSheet.create({
   viewContainer: {
     marginRight: 40,
     marginLeft: 40,
+  },
+  txtRegister: {
+    marginTop: 15,
+    marginLeft: 10,
+    marginRight: 10,
+    fontWeight: "bold",
+  },
+  btnRegister: {
+    color: "#00a680",
   },
   divider: {
     margin: 40,

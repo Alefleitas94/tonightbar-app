@@ -1,13 +1,21 @@
 //import liraries
-import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, Image } from 'react-native';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 // create a component
 const Register = () => {
     return (
-        <View style={styles.container}>
-            <Text>Register</Text>
-        </View>
+        <KeyboardAwareScrollView >
+            <Image
+                source= {require('../../../assets/img/user-login.png')}
+                style= {styles.logo}
+                resizeMode= "contain"
+            />
+            <View style={styles.viewForm}>
+                
+            </View>
+        </KeyboardAwareScrollView>
     );
 };
 
@@ -17,8 +25,13 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#2c3e50',
+        backgroundColor: '#fff',
     },
+    logo: {
+        width:"100%",
+        height: 150,
+        marginTop: 20
+    }
 });
 
 //make this component available to the app
