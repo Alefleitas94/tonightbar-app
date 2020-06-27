@@ -53,7 +53,7 @@ const RootScreen = () =>{
       name="Profile"
       component= {MyAccountStackScreen}
       options = {{
-        tabBarLabel: 'Mi Perfil',
+        tabBarLabel: 'Perfil',
         tabBarColor: '#2766c4',
         tabBarIcon: ({color}) => (
           <MaterialCommunityIcons name='account-circle' color={color} size= {26}/>
