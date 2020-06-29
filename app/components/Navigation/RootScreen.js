@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import Icon from "react-native-vector-icons/Octicons";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
@@ -11,9 +11,11 @@ import SearchStackScreen from "../StackNavigation/Search/StackSearch";
 const Tab = createMaterialBottomTabNavigator();
 
 const RootScreen = () => {
+
+  
   return (
     <Tab.Navigator
-      initialRouteName="Pubs"
+      initialRouteName="root"
       activeColor="#000"
       inactiveColor="#9478cc"
       barStyle={{ backgroundColor: "#fff" }}
@@ -28,9 +30,11 @@ const RootScreen = () => {
               name="compass-outline"
               color="#3390db"
               size={26}
+              
             />
           ),
         }}
+       
       />
       <Tab.Screen
         name="Ranking"
@@ -39,9 +43,10 @@ const RootScreen = () => {
           tabBarLabel: "Top Bares",
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
-              name="star-outline"
+              name='star-outline'
               color="#3390db"
               size={26}
+              
             />
           ),
         }}

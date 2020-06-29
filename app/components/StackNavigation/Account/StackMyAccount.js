@@ -3,8 +3,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 //import components
 import MyAccountScreen from "../../../screens/Account/MyAccountScreen";
-import LoginScreen from '../../../screens/Account/Login';
-import RegisterScreen from '../../../screens/Account/Register'
+import LoginScreen from "../../../screens/Account/Login";
+import RegisterScreen from "../../../screens/Account/Register";
 
 //Creando el stack MyAccount
 const MyAccountStack = createStackNavigator();
@@ -16,6 +16,9 @@ const MyAccountStackScreen = () => (
       headerStyle: {
         backgroundColor: "#fff",
       },
+      headerTitleStyle: {
+        fontWeight: "bold",
+      },
       headerTintColor: "#3390db",
       headerTitleAlign: "center",
     }}
@@ -25,7 +28,6 @@ const MyAccountStackScreen = () => (
       component={MyAccountScreen}
       options={{
         title: "Perfil",
-        
       }}
     />
     <MyAccountStack.Screen
@@ -35,7 +37,7 @@ const MyAccountStackScreen = () => (
         title: "Iniciar Sesión",
       }}
     />
-     <MyAccountStack.Screen
+    <MyAccountStack.Screen
       name="Register"
       component={RegisterScreen}
       options={{

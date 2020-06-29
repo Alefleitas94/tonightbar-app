@@ -4,12 +4,36 @@ import { View, Text, StyleSheet } from "react-native";
 import { Button, Input, Icon } from "react-native-elements";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
+
+
+//utils
+import {validateEmail} from '../../utils/Validation';
+
 // create a component
-const LoginForm = () => {
+const LoginForm = (props) => {
+  
+  const {toastRef} = props;
+
+  //Visible Input
   const [hidePassword, setHidePassword] = useState(false);
 
+  //State Inputs
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  
   const login = () => {
-      console.log('Logueado');
+
+     if ((!email) || (!password)){
+      console.log('Todos los campos son obligatorios');
+      toastRef.current.show('Todos los campos son obligatorios', 2000)
+     }else {
+       if (!validateEmail(email)) {
+        console.log('El email es incorrecto');
+       }else {
+         console.log('Login correcto')
+       }
+     }
+
   }
 
   return (
@@ -17,7 +41,7 @@ const LoginForm = () => {
       <Input
         placeholder="Correo Electronico"
         containerStyle={styles.inputForm}
-        onChange={() => console.log("Email")}
+        onChange={(e) => setEmail(e.nativeEvent.text)}
         rightIcon={
           <MaterialCommunityIcons
             name="email-outline"
@@ -31,7 +55,7 @@ const LoginForm = () => {
         password={true}
         secureTextEntry={hidePassword}
         containerStyle={styles.inputForm}
-        onChange={() => console.log("Contraseña modificada ")}
+        onChange={(e) => setPassword(e.nativeEvent.text)}
         rightIcon={
           <MaterialCommunityIcons
             name={hidePassword ? "eye-outline" : "eye-off-outline"}

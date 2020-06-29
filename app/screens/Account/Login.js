@@ -1,5 +1,5 @@
 //import liraries
-import React, { Component } from "react";
+import React, { useRef } from "react";
 import {
   View,
   Text,
@@ -9,14 +9,18 @@ import {
   Button,
 } from "react-native";
 import { Divider } from "react-native-elements";
-import { useNavigation } from "@react-navigation/native";
-
+import {useNavigation} from '@react-navigation/native';
+import Toast from 'react-native-easy-toast';
 //import components
 import LoginForm from '../../components/Account/LoginForm';
 
 
 // create a component
 const Login = () => {
+
+  const toastRef = useRef();
+
+
   return (
     <ScrollView>
       <Image
@@ -25,13 +29,14 @@ const Login = () => {
         resizeMode="contain"
       />
       <View style={styles.viewContainer}>
-        <LoginForm/>
+        <LoginForm  toastRef={toastRef} />
         <CreateAccount />
       </View>
       <Divider style={styles.divider} />
       <View style={styles.viewContainer}>
         <Text>Login Facebook</Text>
       </View>
+      <Toast style={styles.toast} ref={toastRef} position="top"/>
     </ScrollView>
   );
 };
@@ -82,6 +87,12 @@ const styles = StyleSheet.create({
     margin: 40,
     backgroundColor: "#00a680",
   },
+  toast: {
+    top: 40,
+    backgroundColor: '#ee564b',
+    width: '80%',
+    alignItems: 'center'
+  }
 });
 
 //make this component available to the app

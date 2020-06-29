@@ -15,7 +15,9 @@ const SearchStackScreen = () => (
         backgroundColor: "#fff",
       },
       headerTintColor: "#3390db",
-      
+      headerTitleStyle: {
+        fontWeight: "bold",
+      },
       headerTitleAlign: "center",
     }}
   >
