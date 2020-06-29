@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Button, Input, Icon } from "react-native-elements";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import Loading from '../../components/ActivityIndicator/Loading';
 
 
 
@@ -14,26 +15,31 @@ const LoginForm = (props) => {
   
   const {toastRef} = props;
 
-  //Visible Input
-  const [hidePassword, setHidePassword] = useState(false);
+  //Hide Password
+  const [hidePassword, setHidePassword] = useState(true);
+
+//Visible Loading
+const [isVisible, setIsVisible] = useState(false)
 
   //State Inputs
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   
   const login = () => {
-
+     setIsVisible(true);
      if ((!email) || (!password)){
       console.log('Todos los campos son obligatorios');
       toastRef.current.show('Todos los campos son obligatorios', 2000)
      }else {
        if (!validateEmail(email)) {
-        console.log('El email es incorrecto');
+        toastRef.current.show('El email es incorrecto');
        }else {
-         console.log('Login correcto')
+         //Logica Firebase
+         console.log('Login correcto');
+        
        }
      }
-
+     setIsVisible(false);
   }
 
   return (
@@ -67,10 +73,11 @@ const LoginForm = (props) => {
       />
       <Button
         containerStyle={styles.btnContainerLogin}
-        title="Iniciar Sesion"
+        title="Ingresar"
         buttonStyle={styles.btnLogin}
         onPress= {login}
       />
+       <Loading text= "Iniciando sesion" isVisible={isVisible} />
     </View>
   );
 };
