@@ -14,9 +14,9 @@ const MyAccountStackScreen = () => (
   <MyAccountStack.Navigator
     screenOptions={{
       headerStyle: {
-        backgroundColor: "#2766c4",
+        backgroundColor: "#fff",
       },
-      headerTintColor: "#fff",
+      headerTintColor: "#3390db",
       headerTitleAlign: "center",
     }}
   >
@@ -25,6 +25,7 @@ const MyAccountStackScreen = () => (
       component={MyAccountScreen}
       options={{
         title: "Perfil",
+        
       }}
     />
     <MyAccountStack.Screen

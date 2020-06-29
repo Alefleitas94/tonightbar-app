@@ -12,6 +12,8 @@ import { Divider } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
 
 //import components
+import LoginForm from '../../components/Account/LoginForm';
+
 
 // create a component
 const Login = () => {
@@ -23,7 +25,7 @@ const Login = () => {
         resizeMode="contain"
       />
       <View style={styles.viewContainer}>
-        <Text>Form Login</Text>
+        <LoginForm/>
         <CreateAccount />
       </View>
       <Divider style={styles.divider} />
@@ -64,8 +66,8 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   viewContainer: {
-    marginRight: 40,
-    marginLeft: 40,
+    marginTop:30,
+    marginHorizontal: 40
   },
   txtRegister: {
     marginTop: 15,

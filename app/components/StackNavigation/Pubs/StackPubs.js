@@ -15,9 +15,9 @@ const PubStack = createStackNavigator();
       <PubStack.Navigator
         screenOptions={{
           headerStyle: {
-            backgroundColor: "#2766c4",
+            backgroundColor: "#fff",
           },
-          headerTintColor: "#fff",
+          headerTintColor: "#3390db",
           headerTitleStyle: {
             fontWeight: "bold",
           },
