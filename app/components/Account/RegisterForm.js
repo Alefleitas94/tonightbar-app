@@ -7,7 +7,10 @@ import { validateEmail } from "../../utils/Validation";
 import * as firebase from 'firebase';
 
 // create a component
-const RegisterForm = () => {
+const RegisterForm = (props) => {
+
+  const {toastRef} = props;
+
   //Hide Password
   const [hidePassword, setHidePassword] = useState(true);
   const [hideRepeatPassword, setHideRepeatPassword] = useState(true);
@@ -21,12 +24,15 @@ const RegisterForm = () => {
   const register = async () => {
     if (!email || !password || !repeatPass) {
       console.log("Todos los campos son obligatorios");
+      toastRef.current.show("Todos los campos son obligatorios", 2000);
     }else {
       if (!validateEmail(email)) {
         console.log('El email no es correcto');
+        toastRef.current.show('El email no es correcto',2000);
       }else{
         if(password !== repeatPass){
-          console.log('Las contraseñas no coinciden')
+          console.log('Las contraseñas no coinciden');
+          toastRef.current.show('Las contraseñas no coinciden',2000);
         }else {
           await firebase.auth().createUserWithEmailAndPassword(email,password).then(() => {console.log('Usuario Registrado!')}).catch(() => {console.log('Error al crear la cuenta, intentelo mas tarde')})
         }
@@ -98,7 +104,7 @@ const styles = StyleSheet.create({
   },
   inputForm: {
     width: "100%",
-    marginTop: 2,
+    marginTop: 10,
   },
   btnContainerRegister: {
     marginTop: 10,

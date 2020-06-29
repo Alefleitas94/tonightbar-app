@@ -1,13 +1,17 @@
 //import liraries
-import React from "react";
+import React, {useRef} from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import Toast from 'react-native-easy-toast';
 
 //import components
 import RegisterForm from '../../components/Account/RegisterForm';
 
 // create a component
 const Register = () => {
+
+  const toastRef = useRef()
+
   return (
     <KeyboardAwareScrollView>
       <Image
@@ -16,8 +20,9 @@ const Register = () => {
         resizeMode="contain"
       />
       <View style={styles.viewForm}>
-        <RegisterForm/>
+        <RegisterForm toastRef={toastRef} />
       </View>
+      <Toast style={styles.toast} ref={toastRef} position="top"/>
     </KeyboardAwareScrollView>
   );
 };
@@ -33,12 +38,16 @@ const styles = StyleSheet.create({
   logo: {
     width: "100%",
     height: 150,
-    marginTop: 20,
+    marginTop: 10,
   },
   viewForm: {
     marginRight: 40,
     marginLeft: 40,
   },
+  toast: {
+    marginTop: 40,
+    backgroundColor: '#ee564b'
+  }
 });
 
 //make this component available to the app
