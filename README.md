@@ -1,5 +1,9 @@
 # Aplicacion Tonight Bar
 ### TripAdvisor de Bares - React Native Hooks, Expo &amp; Firebase
 
-![WhatsApp Video 2020-06-29 at 15 46 16](https://user-images.githubusercontent.com/44103977/86044329-5a01ab00-ba20-11ea-9e5e-28eaf33aa67e.gif)
+### ![registerTB](https://user-images.githubusercontent.com/44103977/86298810-17cd9a80-bbd5-11ea-921b-4c61efa4d6e2.jpeg)
+
+
+### ![loginTB](https://user-images.githubusercontent.com/44103977/86298819-1dc37b80-bbd5-11ea-9fb7-3ae43957e319.jpeg)
+
 
