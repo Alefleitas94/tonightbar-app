@@ -14,6 +14,7 @@ import Toast from 'react-native-easy-toast';
 //import components
 import LoginForm from '../../components/Account/LoginForm';
 
+import LoginFacebook from '../../components/Account/LoginFacebook';
 
 // create a component
 const Login = () => {
@@ -33,8 +34,8 @@ const Login = () => {
         <CreateAccount />
       </View>
       <Divider style={styles.divider} />
-      <View style={styles.viewContainer}>
-        <Text>Login Facebook</Text>
+      <View style={styles.viewFacebook}>
+        <LoginFacebook/>
       </View>
       <Toast style={styles.toast} ref={toastRef} position="top"/>
     </ScrollView>
@@ -71,11 +72,15 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   viewContainer: {
-    marginTop:30,
+    marginTop:10,
+    marginHorizontal: 40
+  },
+  viewFacebook:{
+    
     marginHorizontal: 40
   },
   txtRegister: {
-    marginTop: 15,
+    marginTop: 20,
     marginLeft: 10,
     marginRight: 10,
     fontWeight: "bold",
@@ -84,8 +89,10 @@ const styles = StyleSheet.create({
     color: "#00a680",
   },
   divider: {
-    margin: 40,
+    marginTop: 20,
+    marginBottom: 5,
     backgroundColor: "#00a680",
+    marginHorizontal: 40
   },
   toast: {
     top: 40,

@@ -10,6 +10,8 @@ import {useNavigation} from '@react-navigation/native';
 //utils
 import { validateEmail } from "../../utils/Validation";
 
+
+ 
 // create a component
 const LoginForm = (props) => {
   const { toastRef } = props;
