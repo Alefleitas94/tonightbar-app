@@ -35,7 +35,7 @@ const Login = () => {
       </View>
       <Divider style={styles.divider} />
       <View style={styles.viewFacebook}>
-        <LoginFacebook/>
+        <LoginFacebook toastRef={toastRef}/>
       </View>
       <Toast style={styles.toast} ref={toastRef} position="top"/>
     </ScrollView>
