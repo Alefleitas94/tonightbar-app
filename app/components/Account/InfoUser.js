@@ -1,30 +1,63 @@
 //import liraries
-import React, { Component } from "react";
+import React from "react";
+import Avatar, { IconTypes } from "rn-avatar";
 import { View, Text, StyleSheet } from "react-native";
-import { Avatar } from "react-native-elements";
+import * as firebase from "firebase";
+import * as Permissions from "expo-permissions";
+import * as ImagePicker from "expo-image-picker";
+
 // create a component
 const InfoUser = ({ userInfo }) => {
   const avatarDefault = "https://api.adorable.io/avatars/75/abott@adorable.png";
   const { photoURL, email, uid, displayName } = userInfo;
-  console.log(photoURL);
 
-  const changeAvatar = () => {
-    console.log(photoURL);
+  const changeAvatar = async () => {
+    const resultPermission = await Permissions.askAsync(
+      Permissions.CAMERA_ROLL
+    );
+
+    const resultPermissionCamera =
+      resultPermission.permissions.cameraRoll.status;
+
+    if (resultPermissionCamera === "denied") {
+      console.log("Debe aceptar los permisos ");
+    } else {
+      const result = await ImagePicker.launchImageLibraryAsync({
+        allowsEditing: true,
+        aspect: [4, 3],
+      });
+
+      if (result.cancelled) {
+        console.log("Has cancelado");
+      } else {
+        uploadImage(result.uri, uid);
+      }
+    }
   };
+
+  const uploadImage = (uri, nameImage) => {
+
+  }
 
   return (
     <View style={styles.viewUserInfo}>
       <Avatar
-        size={70}
         rounded
         showEditButton
-        onEditPress={changeAvatar}
-        containerStyle={styles.userInfoAvatar}
+        size={70}
         source={{ uri: photoURL ? photoURL : avatarDefault }}
+        containerStyle={{ marginRight: 20 }}
+        onEditPress={changeAvatar}
+        editButton={{
+          name: "edit",
+          type: IconTypes.Entypo,
+        }}
       />
       <View>
-        <Text style={styles.displayName} >{displayName ? displayName : 'Anónimo'}</Text>
-        <Text>{email? email : 'Social Login'} </Text>
+        <Text style={styles.displayName}>
+          {displayName ? displayName : "Anónimo"}
+        </Text>
+        <Text>{email ? email : "Social Login"} </Text>
       </View>
     </View>
   );
@@ -40,10 +73,9 @@ const styles = StyleSheet.create({
     paddingTop: 30,
     paddingBottom: 30,
   },
-  userInfoAvatar: {marginRight: 20},
   displayName: {
-    fontWeight: 'bold'
-  }
+    fontWeight: "bold",
+  },
 });
 
 //make this component available to the app
