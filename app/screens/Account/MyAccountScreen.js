@@ -23,19 +23,9 @@ const MyAccountScreen = () => {
         <Loading isVisible={true} text="Cargando" />
       </View>
     );
-  }
+  };
 
-  return login ? <UserLogged /> : <UserGuest />;
-
-  // define your styles
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
-      backgroundColor: "#2c3e50",
-    },
-  });
+  return login ? <UserLogged /> : <UserGuest />
 };
 //make this component available to the app
 export default MyAccountScreen;
