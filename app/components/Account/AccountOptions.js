@@ -4,9 +4,15 @@ import { View, Text, StyleSheet } from "react-native";
 import { ListItem } from "react-native-elements";
 import Modal from "../Modals/Modal";
 
+import ChangeDisplayName from "./ChangeDisplayName";
+import ChangeEmail from "./ChangeEmail";
+import ChangePassword from "./ChangePassword";
+
 // create a component
 const AccountOptions = () => {
   const [isVisibleModal, setIsVisibleModal] = useState(false);
+
+  const [renderComponent, setRenderComponent] = useState(null);
 
   const menuOptions = [
     {
@@ -16,7 +22,7 @@ const AccountOptions = () => {
       iconColorLeft: "#ccc",
       iconNameRight: "chevron-right",
       iconColorRight: "#ccc",
-      onPress: () => selectedComponent()
+      onPress: () => selectedComponent("displayName"),
     },
     {
       title: "Cambiar Correo Electronico",
@@ -26,7 +32,7 @@ const AccountOptions = () => {
       iconNameRight: "chevron-right",
       iconColorRight: "#ccc",
       onPress: () => {
-        console.log("Change email");
+        selectedComponent("email");
       },
     },
     {
@@ -37,14 +43,29 @@ const AccountOptions = () => {
       iconNameRight: "chevron-right",
       iconColorRight: "#ccc",
       onPress: () => {
-        console.log("Change password");
+        selectedComponent("password");
       },
     },
   ];
 
-  const selectedComponent = () => {
-      setIsVisibleModal(true);
-  }
+  const selectedComponent = (key) => {
+    switch (key) {
+      case "displayName":
+        setRenderComponent(<ChangeDisplayName />);
+        setIsVisibleModal(true);
+        break;
+      case "email":
+        setRenderComponent(<ChangeEmail />);
+        setIsVisibleModal(true);
+        break;
+      case "password":
+        setRenderComponent(<ChangePassword />);
+        setIsVisibleModal(true);
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
     <View>
@@ -66,11 +87,12 @@ const AccountOptions = () => {
           containerStyle={styles.menuItem}
         />
       ))}
-      <Modal isVisible={isVisibleModal} setIsVisible={setIsVisibleModal}>
-        <View>
-          <Text>Estoy dentro del modal</Text>
-        </View>
-      </Modal>
+
+      {renderComponent && (
+        <Modal isVisible={isVisibleModal} setIsVisible={setIsVisibleModal}>
+          {renderComponent}
+        </Modal>
+      )}
     </View>
   );
 };
