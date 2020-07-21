@@ -1,5 +1,5 @@
 //import liraries
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Button } from "react-native-elements";
 import * as firebase from "firebase";
@@ -10,6 +10,9 @@ import AccountOptions from '../../components/Account/AccountOptions';
 const UserLogged = () => {
 
   const [userInfo, setUserInfo] = useState({});
+  const [reloadData, setReloadData] = useState(false);
+  const toastRef = useRef();
+
 
   useEffect(() => {
     const infoAccount = async () => {
@@ -18,12 +21,13 @@ const UserLogged = () => {
       setUserInfo(user.providerData[0]);
     };
     infoAccount();
-  }, [userInfo]);
+    setReloadData(false)
+  }, [reloadData]);
 
   return (
     <View style= {styles.viewUserInfo}>
       <InfoUser userInfo = {userInfo} />
-      <AccountOptions/>
+      <AccountOptions userInfo = {userInfo} setReloadData ={setReloadData} toastRef={useRef}  />
       <Button 
       title="Cerrar sesion" 
       titleStyle= {styles.btnTitleStyle}

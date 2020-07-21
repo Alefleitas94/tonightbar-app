@@ -1,16 +1,46 @@
 //import liraries
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Button, Input } from "react-native-elements";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import * as firebase from "firebase";
 
 // create a component
-const ChangeDisplayName = (props) => {
-    
-  const { displayName } = props;
+const ChangeDisplayName = ({
+  displayName,
+  setIsVisibleModal,
+  setReloadData,
+  toastRef,
+}) => {
+  const [newDisplayName, setNewDisplayName] = useState(null);
+
+  const [error, setError] = useState(null);
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const updateDisplayName = () => {
-    console.log("Nombre Actualizado");
+    setError(null);
+    if (!newDisplayName) {
+      setError("El nombre de usuario no ha cambiado");
+    } else {
+      setIsLoading(true);
+      const update = {
+        displayName: newDisplayName,
+      };
+      firebase
+        .auth()
+        .currentUser.updateProfile(update)
+        .then(() => {
+          setIsLoading(false);
+          setReloadData(true);
+          toastRef.current.show("Nombre actualizado correctamente");
+          setIsVisibleModal(false);
+        })
+        .catch(() => {
+          console.log("Error al actualizar el nombre");
+          setIsLoading(false);
+        });
+    }
   };
 
   return (
@@ -25,12 +55,16 @@ const ChangeDisplayName = (props) => {
             size={25}
           />
         }
+        defaultValue={displayName && displayName}
+        onChange={(e) => setNewDisplayName(e.nativeEvent.text)}
+        errorMessage={error}
       />
       <Button
         title="Cambiar Nombre"
         containerStyle={styles.btnContainer}
         buttonStyle={styles.btn}
         onPress={updateDisplayName}
+        loading={isLoading}
       />
     </View>
   );
@@ -48,7 +82,7 @@ const styles = StyleSheet.create({
   },
   btnContainer: {
     marginTop: 20,
-    width: "50%",
+    width: "95%",
   },
   btn: {
     backgroundColor: "#3390db",

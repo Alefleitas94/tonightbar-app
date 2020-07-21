@@ -9,7 +9,7 @@ import ChangeEmail from "./ChangeEmail";
 import ChangePassword from "./ChangePassword";
 
 // create a component
-const AccountOptions = () => {
+const AccountOptions = ({ userInfo, setReloadData, toastRef }) => {
   const [isVisibleModal, setIsVisibleModal] = useState(false);
 
   const [renderComponent, setRenderComponent] = useState(null);
@@ -51,11 +51,25 @@ const AccountOptions = () => {
   const selectedComponent = (key) => {
     switch (key) {
       case "displayName":
-        setRenderComponent(<ChangeDisplayName />);
+        setRenderComponent(
+          <ChangeDisplayName
+            displayName={userInfo.displayName}
+            setIsVisibleModal={setIsVisibleModal}
+            setReloadData={setReloadData}
+            toastRef={toastRef}
+          />
+        );
         setIsVisibleModal(true);
         break;
       case "email":
-        setRenderComponent(<ChangeEmail />);
+        setRenderComponent(
+          <ChangeEmail
+            email={userInfo.email}
+            setIsVisibleModal={setIsVisibleModal}
+            setReloadData={setReloadData}
+            toastRef={toastRef}
+          />
+        );
         setIsVisibleModal(true);
         break;
       case "password":
