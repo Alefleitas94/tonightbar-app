@@ -5,6 +5,7 @@ import { Button, Input } from "react-native-elements";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import * as firebase from "firebase";
 
+
 // create a component
 const ChangeDisplayName = ({
   displayName,

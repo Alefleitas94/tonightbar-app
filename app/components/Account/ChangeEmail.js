@@ -4,6 +4,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { Input, Button } from "react-native-elements";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import * as firebase from "firebase";
+import { reAuthenticate } from "../../utils/Api";
 
 // create a component
 const ChangeEmail = ({ email, setIsVisibleModal, setReloadData, toastRef }) => {
@@ -14,7 +15,32 @@ const ChangeEmail = ({ email, setIsVisibleModal, setReloadData, toastRef }) => {
   const [hidePassword, setHidePassword] = useState(true);
 
   const updateEmail = () => {
-    console.log("Email Actualizado");
+    setError({});
+    if (!newEmail || email === newEmail) {
+      setError({ email: "El email no puede ser igual o estar vacio" });
+    } else {
+      setIsLoading(true);
+      reAuthenticate(password)
+        .then(() => {
+          firebase
+            .auth()
+            .currentUser.updateEmail(newEmail)
+            .then(() => {
+              setIsLoading(false);
+              setReloadData(true);
+              toastRef.current.show('Email actualizado correctamente');
+              setIsVisibleModal(false);
+            })
+            .catch(() => {
+              setError({ email: "Error al actualizar el email" });
+              setIsLoading(false);
+            });
+        })
+        .catch(() => {
+          setError({ password: "La contraseña no es correcta" });
+          setIsLoading(false);
+        });
+    }
   };
 
   return (
@@ -54,7 +80,7 @@ const ChangeEmail = ({ email, setIsVisibleModal, setReloadData, toastRef }) => {
         containerStyle={styles.btnContainer}
         buttonStyle={styles.btn}
         onPress={updateEmail}
-        loading= {isLoading}
+        loading={isLoading}
       />
     </View>
   );
