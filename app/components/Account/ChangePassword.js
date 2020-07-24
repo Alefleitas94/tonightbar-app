@@ -18,7 +18,49 @@ const ChangePassword = ({ isVisibleModal, toastRef }) => {
   const [hideNewPasswordRepeat, setHideNewPasswordRepeat] = useState(true);
 
   const updatePassword = () => {
-    console.log("Contraseña actualizada");
+    setError({});
+    if (!password || !newPassword || !newPasswordRepeat) {
+      let objError = {};
+      !password && (objError.password = "No puede estar vacio");
+      !newPassword && (objError.newPassword = "No puede estar vacio");
+      !newPasswordRepeat &&
+        (objError.newPasswordRepeat = "No puede estar vacio");
+      setError(objError);
+    } else {
+      if (newPassword !== newPasswordRepeat) {
+        setError({
+          newPassword: "Las nuevas contraseñas tienen que ser iguales",
+          newPasswordRepeat: "Las nuevas contraseñas tienen que ser iguales",
+        });
+      } else {
+        setIsLoading(true);
+        reAuthenticate(password)
+          .then(() => {
+            firebase 
+              .auth()
+              .currentUser.updatePassword(newPassword)
+              .then(() => {
+                setIsLoading(false);
+                toastRef.current.show('Contraseña actualiza correctamente');
+                setIsVisibleModal(false)
+                firebase.auth().signOut();
+                })
+              .catch(() => {
+                setError({
+                  general: 'No se pudo actualizar la contraseña'
+                })
+               setIsLoading(false);
+               setIsVisibleModal(false);
+              });
+          })
+          .catch(() => {
+            setError({
+              password: "La contraseña no es correcta",
+            });
+            setIsLoading(false);
+          });
+      }
+    }
   };
 
   return (
@@ -69,7 +111,7 @@ const ChangePassword = ({ isVisibleModal, toastRef }) => {
           />
         }
         onChange={(e) => setNewPasswordRepeat(e.nativeEvent.text)}
-        errorMessage={error.newRepeatPassword}
+        errorMessage={error.newPasswordRepeat}
       />
       <Button
         title="Cambiar contraseña"

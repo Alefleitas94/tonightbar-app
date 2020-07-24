@@ -1,8 +1,9 @@
 import React from 'react';
 import { createStackNavigator } from "@react-navigation/stack";
 
-//Importando Screen Bars
+//Importando Screens
 import PubsScreen from '../../../screens/Pubs/PubsScreen';
+import AdPubsScreen from '../../../screens/Pubs/AdPubs';
 
 
 //Creando el Stack de Bars
@@ -30,6 +31,13 @@ const PubStack = createStackNavigator();
                   options={{
                       title: "Bares",
                   }}
+        />
+        <PubStack.Screen
+          name="Ads Pubs"
+          component= {AdPubsScreen}
+          options= {{
+            title: 'Nuevo Restaurante'
+          }}
         />
       </PubStack.Navigator>
     );

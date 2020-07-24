@@ -71,12 +71,13 @@ const AccountOptions = ({ userInfo, setReloadData, toastRef }) => {
           />
         );
         setIsVisibleModal(true);
-        break;
+        break; 
       case "password":
         setRenderComponent(
           <ChangePassword
             setIsVisibleModal={setIsVisibleModal}
             toastRef={toastRef}
+            setIsVisibleModal = {setIsVisibleModal}
           />
         );
         setIsVisibleModal(true);
