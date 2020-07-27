@@ -1,12 +1,13 @@
 //import liraries
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 // create a component
-const AdPubs = () => {
+const AddPubForm = ({navigation, toastRef, setIsLoading}) => {
+    console.log(navigation);
     return (
         <View style={styles.container}>
-            <Text>Ad Pubs</Text>
+            <Text>AddPubForm</Text>
         </View>
     );
 };
@@ -17,9 +18,10 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#fff',
+        backgroundColor: '#2c3e50',
     },
 });
 
 //make this component available to the app
-export default AdPubs;
+export default AddPubForm;
+
