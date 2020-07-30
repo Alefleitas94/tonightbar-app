@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { View, ScrollView, StyleSheet, Alert, Dimensions } from "react-native";
 import { Icon, Button, Avatar, Input, Image } from "react-native-elements";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import * as Permissions from "expo-permissions";
+import * as ImagePicker from "expo-image-picker";
 
 // create a component
 const AddPubForm = ({ navigation, toastRef, setIsLoading }) => {
@@ -13,32 +14,66 @@ const AddPubForm = ({ navigation, toastRef, setIsLoading }) => {
       <UploadImage
         imageSelected={imageSelected}
         setImageSelected={setImageSelected}
+        toastRef={toastRef}
       />
     </ScrollView>
   );
 };
 
-function UploadImage(props)  {
-  const { imageSelected, setImageSelected } = props;
+function UploadImage(props) {
+  const { imageSelected, setImageSelected, toastRef } = props;
+
+  const imageSelect = async () => {
+    const resultPermission = await Permissions.askAsync(
+      Permissions.CAMERA_ROLL
+    );
+    const resultPermissionCamera =
+      resultPermission.permissions.cameraRoll.status;
+
+    if (resultPermissionCamera === "denied") {
+      toastRef.current.show(
+        "Debe aceptar los permisos de la galeria, si los has rechazado, activalos en ajustes",
+        5000
+      );
+    } else {
+      const result = await ImagePicker.launchImageLibraryAsync({
+        allowsEditing: true,
+        aspect: [4, 3],
+      });
+      if (result.cancelled) {
+        toastRef.current.show(
+          "Has cerado la galeria sin seleccionar alguna imagen",
+          3000
+        );
+      } else {
+        setImageSelected([...imageSelected, result.uri]);
+      }
+    }
+  };
 
   return (
     <View style={styles.viewImage}>
-      <Icon
-        type="material-community"
-        name="camera"
-        color="#7a7a7a"
-        containerStyle={styles.containerIcon}
-        onPress={() => console.log("Subiendo imagen..")}
-      />
-      <Avatar
-        onPress={() => console.log("Eliminando imagen..")}
-        style={styles.miniatureStyle}
-        
-        //source={{//Url miniatura del restaurante}}
-      />
+      {imageSelected.length < 5 && (
+        <Icon
+          type="material-community"
+          name="camera"
+          color="#7a7a7a"
+          containerStyle={styles.containerIcon}
+          onPress={imageSelect}
+        />
+      )}
+
+      {imageSelected.map((imagePub) => (
+        <Avatar
+          key={imagePub}
+          onPress={() => console.log("Eliminando imagen..")}
+          style={styles.miniatureStyle}
+          source={{ uri: imagePub }}
+        />
+      ))}
     </View>
   );
-};
+}
 
 // define your styles
 const styles = StyleSheet.create({
